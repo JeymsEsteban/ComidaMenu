@@ -40,7 +40,7 @@ public class MenuComida extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Menú Comida");
 
-        cbFrutas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Uva", "Fresa", "Mango", "Uchuba", "Zapote", "Manzana", "Cereza" }));
+        cbFrutas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "----", "Uva", "Fresa", "Mango", "Uchuba", "Zapote", "Manzana", "Cereza" }));
         cbFrutas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbFrutasActionPerformed(evt);
@@ -51,7 +51,7 @@ public class MenuComida extends javax.swing.JFrame {
 
         jLabel3.setText("Platos");
 
-        cbPlatos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hamburguesa", "Pizza", "Pechuga", "Lomo", "Churrasco", "Ajiaco", "Monfongo", " " }));
+        cbPlatos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "----", "Hamburguesa", "Pizza", "Pechuga", "Lomo", "Churrasco", "Ajiaco", "Monfongo", " " }));
         cbPlatos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbPlatosActionPerformed(evt);
@@ -60,7 +60,7 @@ public class MenuComida extends javax.swing.JFrame {
 
         jLabel4.setText("Vegano");
 
-        cbVegane.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hamburguesa Vegana", "Pollo vegano", "Tocino vegano", "Leche vegana", "Falafel", "Mazamorra vegana" }));
+        cbVegane.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "----", "Hamburguesa Vegana", "Pollo vegano", "Tocino vegano", "Leche vegana", "Falafel", "Mazamorra vegana" }));
         cbVegane.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbVeganeActionPerformed(evt);
@@ -143,10 +143,14 @@ public class MenuComida extends javax.swing.JFrame {
         Fruta = cbFrutas.getItemAt(cbFrutas.getSelectedIndex());
         Platos = cbPlatos.getItemAt(cbPlatos.getSelectedIndex());
         Vegane = cbVegane.getItemAt(cbVegane.getSelectedIndex());
-
-        JOptionPane.showMessageDialog(this, "La comida seleccionada es: " +
+        if (Fruta == "----" || Platos == "----" || Vegane == "----") {
+            JOptionPane.showMessageDialog(this, "No deje ningun campo en blanco", "Orden incompleta", HEIGHT);
+        }else{
+            JOptionPane.showMessageDialog(this, "La comida seleccionada es: " +
             "\nFruta: " + Fruta  +
             "\nPlato: " + Platos + "\nVegano: " + Vegane, "Orden de Comida", HEIGHT);
+        }
+        
     }//GEN-LAST:event_OrderActionPerformed
 
     private void cbVeganeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbVeganeActionPerformed
